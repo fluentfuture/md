@@ -1,4 +1,4 @@
-This page introduces a few tips about using Mockito spies.
+This page describes a few (common) scenarios where Mockito spies work rather affectively.
 
 ## Invariants and State-based Objects
 
