@@ -8,7 +8,7 @@ This page introduces a few advanced ways of using Mockito spies.
 
 Mock object can be a great tool if used properly. But when the test double has invariants to be respected, mocking isn't almost effective at this kind of job.
 
-### Case Study 1: to test a servlet that uses HttpServletRequest
+### Case Study 1: to test a servlet that uses `HttpServletRequest`
 
 As demonstrated in [Mocks are Stupid](http://endoflineblog.com/testing-with-doubles-or-why-mocks-are-stupid-part-4), HttpServletRequest is one such object with invariants:
 
