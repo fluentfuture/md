@@ -143,8 +143,8 @@ It's worth noting that the class being spied is allowed to be non-static innner 
 ## Dummy objects
 
 * **Do** use `spy()` or `@Spy` to create dummies
-* **Do not** use `when().thenReturn()` to program dummies.
 * **Do not** return a mock from helper methods.
+* **Do not** use `when().thenReturn()` to program dummies.
 
 A somewhat common mistake is as reported in this Stack Overflow [thread](http://stackoverflow.com/questions/26318569/unfinished-stubbing-detected-in-mockito). That is, trying to use a factory helper that returns a mock while configuring another mock. The code can look quite innocent and puzzling:
 ```java
