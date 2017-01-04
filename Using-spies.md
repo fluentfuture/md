@@ -7,6 +7,8 @@ This page introduces a few advanced ways of using Mockito spies.
 
 Mock object can be a great tool if used properly. But when the test double has invariants to be respected, mocking isn't almost effective at this kind of job.
 
+#### To test a servlet that uses HttpServletRequest
+
 As demonstrated in [Mocks are Stupid](http://endoflineblog.com/testing-with-doubles-or-why-mocks-are-stupid-part-4), HttpServletRequest is one such object with invariants:
 
 ```java
@@ -24,19 +26,19 @@ HttpServletRequest has what? 30 or 40 methods? And who's to say it won't gain mo
 
 Ideally, for common interfaces like HttpServletRequest, there should already be a FakeHttpServletRequest classes created and tested by someone so we can just use for free. But I can say for sure I've been caught off guard on large interfaces that no one has bothered to create a proper fake implementation and I surely wasn't up for such task when all I needed was to test my SUT that uses only 2 or 3 methods.
 
-Mockito's `@Spy` offers a middle-ground where you don't have to give up one benefit for the other. Say, I know my SUT only deals with attributes, such fake implementation is rather trivial to implement, with @Spy, because I can just override the 3 methods I care about:
+Mockito's `@Spy` offers a middle-ground where you don't have to give up one benefit for the other. Say, I know my SUT only deals with request attributes, such fake implementation is rather trivial to implement, with @Spy, because I can just override the 3 methods I care about:
 
 ```java
 @Spy private FakeHttpServletRequest request;
 
-@Test public void testBadAttributeCauseAutoLogout() {
+@Test public void testBadAttributeCausesAutoLogout() {
   request.addAttribute(MAGIC_ATTRIBUTE_KEY, "bad");
   new LoginServlet().service(request, response);
   verify(request).logout();
 }
 
 static abstract class FakeHttpServletRequest implements HttpServletRequest {
-  private finl Map<String, Object> attributes = new LinkedHashMap<>();
+  private final Map<String, Object> attributes = new LinkedHashMap<>();
 
   @Override public Object getAttribute(String name) {
     return attributes.get(name);
@@ -54,7 +56,9 @@ static abstract class FakeHttpServletRequest implements HttpServletRequest {
 And did you see that line calling `verify(request).logout()` on the spy? It means that not only can we implement plain old Java methods for better invariant handling, we don't lose out the ability to use it as a mock where mocks work better: testing interactions (in this case, logout() be called once and only once).
 
 
-Another example where @Spy helps to create better test code: suppose we have a Job scheduler framework that internally utilizes a `ScheduledExecutorService` to invoke the jobs at the right time.
+#### To test a JobScheduler that uses `java.util.concurrent.ScheduledExecutorService`
+
+Another example where @Spy helps to create better test code: suppose we have a Job scheduler framework that internally utilizes a ScheduledExecutorService to invoke the jobs at the right time.
 
 To test such framework, manually programing the ScheduledExecutorService.schedule() and submit() methods and all the time-related logic would be tedious, at best.
 
