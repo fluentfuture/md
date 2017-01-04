@@ -231,7 +231,7 @@ While it works, it's got several things that could use some sweetening:
 * The need of the matchers, especially when there are generic parameters.
 
 Instead, consider using an abstract class with `@Spy`:
-``java
+```java
 @Spy private StubUserService userService;
 
 static abstract class UserService implements UserService {
