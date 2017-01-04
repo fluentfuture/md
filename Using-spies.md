@@ -205,7 +205,7 @@ static abstract class DummySubModel implements SubModel {
 
 * **Do** use `spy()` or `@Spy` on an abstract class to implement the default behavior.
 * **Do not** `doAnswer()` in a `setUp()` or `@Before` method.
-* **Do** read the method parameters the same way you read them from any Java method.
+* **Do** declare method parameters with the correct types and use them away.
 * **Do not** cast.
 
 Ever needed to stub a default behavior of a method in setUp()? This isn't uncommon:
