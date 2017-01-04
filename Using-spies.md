@@ -206,7 +206,7 @@ static abstract class DummySubModel implements SubModel {
 * **Do** use `spy()` or `@Spy` on an abstract class to implement the default behavior.
 * **Do not** `doAnswer()` in a `setUp()` or `@Before` method.
 * **Do** read the method parameters the same way you read them from any Java method.
-* **Do not** read the method parameters through casting or even trigger generic warnings if the parameters are parameterized.
+* **Do not** cast.
 
 Ever needed to stub a default behavior of a method in setUp()? This isn't uncommon:
 ```java
@@ -229,7 +229,7 @@ Ever needed to stub a default behavior of a method in setUp()? This isn't uncomm
 While it works, it's got several things that could use some sweetening:
 * The casts!
 * The unchecked casts!
-* The method signature and the implementation are backwards.
+* The method signature and the implementation read backwards.
 * The need of the matchers, especially when there are generic parameters.
 
 Instead, consider using an abstract class with `@Spy`:
@@ -246,4 +246,4 @@ static abstract class UserService implements UserService {
   }
 }
 ```
-You what what's also sweet? Your IDE brings you instantly to the method body if you "Open definition".
+And what's also sweet? Your IDE brings you instantly to the method body if you "Open definition".
