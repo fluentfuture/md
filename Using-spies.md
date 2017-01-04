@@ -4,7 +4,7 @@ This page introduces a few advanced ways of using Mockito spies.
 
 * **Do** implement object invariants with spies.
 * **Do not** `mock()` or `when().thenReturn()` invariants.
-* **Do not** implement unrelated interface methods when implementing invariants.
+* **Do not** specify unrelated interface methods when implementing invariants.
 
 Mock object can be a great tool if used properly. But when the test double has invariants to be respected, mocking isn't almost effective at this kind of job.
 
