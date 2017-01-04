@@ -126,8 +126,7 @@ public class JobSchdulerTest {
     /** Runs all jobs that are ready by now. Leaves the rest. */
     void run() {
       Instant now = clock.instant();
-      List<Job> ready =
-          jobs.stream().filter(job -> job.ready(now)).collect(toList());
+      List<Job> ready = jobs.stream().filter(job -> job.ready(now)).collect(toList());
       jobs = jobs.stream()
           .filter(job -> job.pending(now))
           .collect(toCollection(ArrayList::new));
