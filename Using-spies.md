@@ -181,3 +181,20 @@ static abstract class DummySubModel implements SubModel {
   }
 }
 ```
+
+Or, what the heck. Since dummies tend to be stateless anyway, might as well just skip the dummySubModel() helper method and declare it as a `@Spy` field:
+```java
+@Spy private DummySubModel subModel;
+
+...
+Model model = mock(Model.class);
+when(model.getSubModel()).thenReturn(dummySubModel());
+...
+
+static abstract class DummySubModel implements SubModel {
+  @Override public String getName() {
+    return "anything but null";
+  }
+}
+```
+
