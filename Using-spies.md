@@ -50,7 +50,7 @@ static abstract class FakeHttpServletRequest implements HttpServletRequest {
     attributes.put(name, value);
   }
 }
-```java
+```
 And did you see that line calling `verify(request).logout()` on the spy? It means that not only can we implement plain old Java methods for better invariant handling, we don't lose out the ability to use it as a mock where mocks work better: testing interactions (in this case, logout() be called once and only once).
 
 
