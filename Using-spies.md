@@ -154,6 +154,7 @@ when(model.getSubModel()).thenReturn(dummySubModel());
 private SubModel dummySubModel() {
   SubModel sub = mock(SubModel.class);
   when(sub.getName()).thenReturn("anything but null");
+  // other dummy states...
   return sub;
 }
 ```
@@ -180,6 +181,7 @@ static abstract class DummySubModel implements SubModel {
   @Override public String getName() {
     return "anything but null";
   }
+  // other dummy states...
 }
 ```
 
