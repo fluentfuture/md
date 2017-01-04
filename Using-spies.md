@@ -1,6 +1,6 @@
 This page describes a few (common) scenarios where Mockito spies work rather affectively.
 
-# Invariants and State-based Objects
+## Invariants and State-based Objects
 
 * **Do** implement object invariants with spies.
 * **Do not** `mock()` or `when().thenReturn()` invariants.
@@ -8,7 +8,7 @@ This page describes a few (common) scenarios where Mockito spies work rather aff
 
 Mock object can be a great tool if used properly. But when the test double has invariants to be respected, mocking isn't almost effective at this kind of job.
 
-### Case Study 1: to test a servlet that uses `HttpServletRequest`
+#### Case Study 1: _to test a servlet that uses `HttpServletRequest`_
 
 As demonstrated in [Mocks are Stupid](http://endoflineblog.com/testing-with-doubles-or-why-mocks-are-stupid-part-4), HttpServletRequest is one such object with invariants:
 
@@ -57,7 +57,7 @@ static abstract class FakeHttpServletRequest implements HttpServletRequest {
 And did you see that line calling `verify(request).logout()` on the spy? It means that not only can we implement plain old Java methods for better invariant handling, we don't lose out the ability to use it as a mock where mocks work better: testing interactions (in this case, logout() be called once and only once).
 
 
-### Case Study 2: to test a JobScheduler that uses `ScheduledExecutorService`
+#### Case Study 2: _to test a JobScheduler that uses `ScheduledExecutorService`_
 
 Another example where @Spy helps to create better test code: suppose we have a Job scheduler framework that internally utilizes a ScheduledExecutorService to invoke the jobs at the right time.
 
@@ -140,7 +140,7 @@ While it requires a bit of code in the FakeScheduledExecutorService class, we ge
 
 It's worth noting that the class being spied is allowed to be non-static innner class of the test class, which enables it to read state from other fields (in this case, the clock object). Using this technique, we make the executor and the clock working together seamlessly.
 
-# Dummy objects
+## Dummy objects
 
 * **Do** use `spy()` or `@Spy` to create dummies
 * **Do not** return a mock from helper methods.
