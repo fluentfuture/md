@@ -201,7 +201,7 @@ static abstract class DummySubModel implements SubModel {
 }
 ```
 
-#### Case Study 3: to specify default _behavior_ of a method
+## Default behvavior
 
 * **Do** use `spy()` or `@Spy` on an abstract class to implement the default behavior.
 * **Do not** `doAnswer()` in a `setUp()` or `@Before` method.
