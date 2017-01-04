@@ -167,7 +167,7 @@ when(sub.getName());  // Oops!
 ```
 the second when() call happened before the first when() call is finished.
 
-For helpers that create dummy objects like this, using `spy()` minimizes caveats and surprises down the road when other people inevitably attempt to use your helper method, because there is no `when()` call involved (just @Override's):
+For helpers that create dummy objects like this, using `spy()` minimizes caveats and surprises down the road when other people inevitably attempt to use your helper method, because there is no `when()` call involved (just _@Override_'s):
 ```java
 Model model = mock(Model.class);
 when(model.getSubModel()).thenReturn(dummySubModel());
