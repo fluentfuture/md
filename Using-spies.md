@@ -135,7 +135,7 @@ public class JobSchdulerTest {
   }
 }
 ```
-While it requires a bit of code in the FakeScheduledExecutorService class, we get to extract orthogonal logic out of the tests so that tests stay clean and easy to understand. In reality, the fake tends to be reused by many different tests in the test class, so it's well worth it.
+While it requires a bit of code in the FakeScheduledExecutorService class, we get to extract orthogonal logic out of the tests so that tests stay clean and easy to understand. In reality, the fake tends to be reused by many different tests in the test class, so it more than pays for itself.
 
 It's worth noting that the class being spied is allowed to be non-static innner class of the test class, which enables it to read state from other fields (in this case, the clock object). Using this technique, we make the executor and the clock working together seamlessly.
 
