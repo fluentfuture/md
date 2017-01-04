@@ -246,3 +246,4 @@ static abstract class UserService implements UserService {
   }
 }
 ```
+You what what's also sweet? Your IDE brings you instantly to the method body if you "Open definition".
