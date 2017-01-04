@@ -1,6 +1,6 @@
 This page describes a few (common) scenarios where Mockito spies work rather affectively.
 
-## Invariants and State-based Objects
+# Invariants and State-based Objects
 
 * **Do** implement object invariants with spies.
 * **Do not** `mock()` or `when().thenReturn()` invariants.
@@ -140,7 +140,7 @@ While it requires a bit of code in the FakeScheduledExecutorService class, we ge
 
 It's worth noting that the class being spied is allowed to be non-static innner class of the test class, which enables it to read state from other fields (in this case, the clock object). Using this technique, we make the executor and the clock working together seamlessly.
 
-## Dummy objects
+# Dummy objects
 
 * **Do** use `spy()` or `@Spy` to create dummies
 * **Do not** return a mock from helper methods.
