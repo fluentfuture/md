@@ -60,9 +60,9 @@ And did you see that line calling `verify(request).logout()` on the spy? It mean
 
 Another example where @Spy helps to create better test code: suppose we have a Job scheduler framework that internally utilizes a ScheduledExecutorService to invoke the jobs at the right time.
 
-To test such framework, manually programing the ScheduledExecutorService.schedule() and submit() methods and all the time-related logic would be tedious, at best.
+To test such framework, manually programing the _ScheduledExecutorService.schedule()_ and _submit()_ methods and the time-related logic would be tedious, at best.
 
-The following test uses `@Spy` to test that a job failed with SERVER_TOO_BUSY gets rescheduled for a later run:
+The following test uses `@Spy` to create a relatively trivial `FakeScheduledExecutorService` and then uses it to test behaviors, for instance: a job failed with SERVER_TOO_BUSY gets rescheduled for a later run:
 ```java
 public class JobSchdulerTest {
   @Spy private FakeClock clock;
@@ -136,9 +136,9 @@ public class JobSchdulerTest {
   }
 }
 ```
-While it requires a bit of code in the FakeScheduledExecutorService class, we get to extract orthogonal logic out of the tests so that tests stay clean and easy to understand. And in reality, the fake will be reused by many different tests in the test class.
+While it requires a bit of code in the FakeScheduledExecutorService class, we get to extract orthogonal logic out of the tests so that tests stay clean and easy to understand. In reality, the fake tends to be reused by many different tests in the test class, so it's well worth it.
 
-It's worth noting that the class being spied is allowed to be non-static innner class of the test class, which enables it to read state from other fields, in this case, the clock object. Using this technique, we make the two objects working together seamlessly.
+It's worth noting that the class being spied is allowed to be non-static innner class of the test class, which enables it to read state from other fields (in this case, the clock object). Using this technique, we make the executor and the clock working together seamlessly.
 
 ## Dummy objects
 
