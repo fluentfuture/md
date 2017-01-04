@@ -1,4 +1,4 @@
-This page describes a few (common) scenarios where Mockito spies work rather affectively.
+This page describes a few (common) scenarios where Mockito spies work affectively.
 
 ## Invariants and State-based Objects
 
