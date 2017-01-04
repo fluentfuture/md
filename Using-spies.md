@@ -3,7 +3,7 @@ This page introduces a few advanced ways of using Mockito spies.
 ## Invariants and State-based Objects
 
 * **Do** implement object invariants with spies.
-* **Do not** mock and `when().thenReturn()` invariants.
+* **Do not** `mock()` or `when().thenReturn()` invariants.
 
 Mock object can be a great tool if used properly. But when the test double has invariants to be respected, mocking isn't almost effective at this kind of job.
 
