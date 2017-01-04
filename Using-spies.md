@@ -210,6 +210,8 @@ static abstract class DummySubModel implements SubModel {
 
 Ever needed to stub a default behavior of a method in setUp()? This isn't uncommon:
 ```java
+@Mock private UserService userService;
+
 @Before public void setUp() {
   doAnswer(new Answer<Object>() {
     @Override public Object answer(InvocationOnMock invocationOnMock) {
@@ -233,6 +235,8 @@ While it works, it's got several things that could use some sweetening:
 Instead, consider using an abstract class with `@Spy`:
 ```java
 @Spy private StubUserService userService;
+
+// Don't need the setUp() any more.
 
 static abstract class UserService implements UserService {
   @Override public boolean addUsers(List<User> users, Policy policy) {
