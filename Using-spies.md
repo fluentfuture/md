@@ -2,8 +2,8 @@ This page introduces a few advanced ways of using Mockito spies.
 
 ## Invariants and State-based Objects
 
-* Do implement object invariants with spies.
-* Do not mock and `when().thenReturn()` invariants.
+* *Do* implement object invariants with spies.
+* *Do not* mock and `when().thenReturn()` invariants.
 
 Mock object can be a great tool if used properly. But when the test double has invariants to be respected, mocking isn't almost effective at this kind of job.
 
@@ -141,8 +141,8 @@ It's worth noting that the class being spied is allowed to be non-static innner 
 
 ## Dummy objects
 
-* Do use spy to create dummies
-* Do not return a mock from helper methods.
+* *Do* use spy to create dummies
+* *Do not* return a mock from helper methods.
 
 A somewhat common mistake is as reported in this Stack Overflow [thread](http://stackoverflow.com/questions/26318569/unfinished-stubbing-detected-in-mockito). That is, trying to use a factory helper that returns a mock while configuring another mock. The code can look quite innocent and puzzling:
 ```java
