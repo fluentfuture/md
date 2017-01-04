@@ -8,7 +8,7 @@ This page introduces a few advanced ways of using Mockito spies.
 
 Mock object can be a great tool if used properly. But when the test double has invariants to be respected, mocking isn't almost effective at this kind of job.
 
-#### To test a servlet that uses HttpServletRequest
+### Case Study 1: to test a servlet that uses HttpServletRequest
 
 As demonstrated in [Mocks are Stupid](http://endoflineblog.com/testing-with-doubles-or-why-mocks-are-stupid-part-4), HttpServletRequest is one such object with invariants:
 
@@ -57,7 +57,7 @@ static abstract class FakeHttpServletRequest implements HttpServletRequest {
 And did you see that line calling `verify(request).logout()` on the spy? It means that not only can we implement plain old Java methods for better invariant handling, we don't lose out the ability to use it as a mock where mocks work better: testing interactions (in this case, logout() be called once and only once).
 
 
-#### To test a JobScheduler that uses `java.util.concurrent.ScheduledExecutorService`
+### Case Study 2: to test a JobScheduler that uses `ScheduledExecutorService`
 
 Another example where @Spy helps to create better test code: suppose we have a Job scheduler framework that internally utilizes a ScheduledExecutorService to invoke the jobs at the right time.
 
