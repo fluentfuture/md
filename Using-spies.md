@@ -230,7 +230,7 @@ While it works, it's got several things that could use some sweetening:
 * The casts!
 * The unchecked casts!
 * The method signature and the implementation read backwards.
-* The need of the matchers, especially when there are generic parameters.
+* The need of the matchers, especially `Matchers.<List<User>>any()` or `any(List.class)` with free unchecked warnings.
 
 Instead, consider using an abstract class with `@Spy`:
 ```java
