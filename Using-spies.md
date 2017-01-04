@@ -247,3 +247,5 @@ static abstract class UserService implements UserService {
 }
 ```
 And what's also sweet? Your IDE brings you instantly to the method body if you "Open definition".
+
+Remember that the spy also allows the `addUsers()` method to be stubbed with explicit `when()` or verified using `verify(userService).addUsers(...)`.
